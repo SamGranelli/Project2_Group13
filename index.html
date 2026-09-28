@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SupperPlan</title>
+  <meta name="description" content="Plan a week of dinners under budget, with a priced grocery list.">
+  <meta name="theme-color" content="#e8603c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SupperPlan">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">🍽️</span> <span id="title">SupperPlan</span></div>
+    <div class="subtitle" id="subtitle"></div>
+  </header>
+
+  <main id="view" tabindex="-1"></main>
+
+  <nav class="tabs" aria-label="Main">
+    <button data-tab="plan"><span aria-hidden="true">📅</span>Plan</button>
+    <button data-tab="list"><span aria-hidden="true">🛒</span>List</button>
+    <button data-tab="recipes"><span aria-hidden="true">📖</span>Recipes</button>
+    <button data-tab="settings"><span aria-hidden="true">⚙️</span>Settings</button>
+  </nav>
+
+  <div class="sheet-backdrop" id="backdrop" hidden></div>
+  <section class="sheet" id="sheet" role="dialog" aria-modal="true" hidden></section>
+  <section class="cook" id="cook" hidden></section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
