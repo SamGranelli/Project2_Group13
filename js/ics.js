@@ -1,5 +1,5 @@
 // Calendar file with shopping-day and thaw reminders — works with Apple/Google Calendar, no server needed.
-import { state, recipe } from './store.js';
+import { state } from './store.js';
 import { addDays, planTotal, shopDate, thawFor } from './planner.js';
 
 const esc = (s) => String(s).replace(/[\\;,]/g, (c) => '\\' + c).replace(/\n/g, '\\n');
@@ -26,10 +26,10 @@ export function buildIcs(plan) {
   plan.days.forEach((d, i) => {
     const frozen = thawFor(plan, i);
     if (!frozen.length) return;
-    const r = recipe(d.recipeId);
     const iso = addDays(plan.start, i - 1);
     const names = frozen.map((f) => f.name).join(', ');
-    events.push(event(`thaw-${plan.start}-${i}`, iso, '1900', `🧊 Thaw for tomorrow: ${names}`, `Move to the fridge tonight for ${r.name}.`));
+    const meals = [...new Set(frozen.map((f) => f.forRecipe))].join(' and ');
+    events.push(event(`thaw-${plan.start}-${i}`, iso, '1900', `🧊 Thaw for tomorrow: ${names}`, `Move to the fridge tonight for ${meals}.`));
   });
   return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//SupperPlan//EN', 'CALSCALE:GREGORIAN', ...events, 'END:VCALENDAR'].join('\r\n');
 }

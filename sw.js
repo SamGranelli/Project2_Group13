@@ -1,5 +1,5 @@
 // Offline support: cache the app shell, serve it cache-first, refresh in the background.
-const CACHE = 'supperplan-v1';
+const CACHE = 'supperplan-v2';
 const FILES = [
   './', 'index.html', 'manifest.webmanifest', 'css/styles.css',
   'js/app.js', 'js/data.js', 'js/store.js', 'js/planner.js', 'js/parse.js', 'js/ics.js',

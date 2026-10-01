@@ -70,12 +70,29 @@ export const CATALOG = {
   paprika:         { name: 'Smoked paprika',           aisle: 'Spices',         unit: 'tsp', pack: 20,  price: 2.49, staple: true },
   taco_season:     { name: 'Taco seasoning packet',    aisle: 'Spices',         unit: 'each',pack: 1,   price: 0.79 },
   sriracha:        { name: 'Sriracha',                 aisle: 'Pantry',         unit: 'tbsp',pack: 28,  price: 3.49, staple: true },
+  oats:            { name: 'Rolled oats',              aisle: 'Pantry',         unit: 'cup', pack: 15,  price: 4.29 },
+  granola:         { name: 'Granola',                  aisle: 'Pantry',         unit: 'cup', pack: 3.5, price: 3.99 },
+  syrup:           { name: 'Pancake syrup',            aisle: 'Pantry',         unit: 'tbsp',pack: 24,  price: 2.99 },
+  cinnamon:        { name: 'Ground cinnamon',          aisle: 'Spices',         unit: 'tsp', pack: 24,  price: 1.99, staple: true },
+  tuna:            { name: 'Tuna (can)',               aisle: 'Pantry',         unit: 'can', pack: 1,   price: 1.19 },
+  tomato_soup:     { name: 'Tomato soup (can)',        aisle: 'Pantry',         unit: 'can', pack: 1,   price: 1.29 },
+  mayo:            { name: 'Mayonnaise',               aisle: 'Pantry',         unit: 'tbsp',pack: 30,  price: 3.79 },
+  caesar:          { name: 'Caesar dressing',          aisle: 'Pantry',         unit: 'tbsp',pack: 16,  price: 2.99 },
+  hummus:          { name: 'Hummus',                   aisle: 'Produce',        unit: 'tbsp',pack: 16,  price: 3.49 },
+  banana:          { name: 'Banana',                   aisle: 'Produce',        unit: 'each',pack: 1,   price: 0.27 },
+  apple:           { name: 'Apple',                    aisle: 'Produce',        unit: 'each',pack: 1,   price: 0.89 },
+  cucumber:        { name: 'Cucumber',                 aisle: 'Produce',        unit: 'each',pack: 1,   price: 0.79 },
+  romaine:         { name: 'Romaine hearts (3-pack)',  aisle: 'Produce',        unit: 'cup', pack: 9,   price: 3.49 },
+  deli_turkey:     { name: 'Sliced deli turkey',       aisle: 'Meat & Seafood', unit: 'oz',  pack: 9,   price: 4.49 },
+  cheese_slices:   { name: 'Sliced cheese',            aisle: 'Dairy & Eggs',   unit: 'slice',pack: 12, price: 2.99 },
+  english_muffins: { name: 'English muffins',          aisle: 'Bakery',         unit: 'each',pack: 6,   price: 2.29 },
+  frozen_berries:  { name: 'Frozen mixed berries',     aisle: 'Frozen',         unit: 'cup', pack: 3,   price: 3.49 },
 };
 
 export const AISLE_ORDER = ['Produce', 'Meat & Seafood', 'Dairy & Eggs', 'Bakery', 'Frozen', 'Pantry', 'Spices', 'Other'];
 
 // Recipes are written for `serves` people; everything scales from there.
-// Macros are per serving (approximate).
+// Macros are per serving (approximate). `meals` says which meals a recipe can fill (default: dinner).
 export const RECIPES = [
   {
     id: 'sheet-pan-chicken-fajitas', name: 'Sheet-Pan Chicken Fajitas', emoji: '🌮', serves: 4, minutes: 30,
@@ -90,7 +107,7 @@ export const RECIPES = [
     steps: ['Brown beef in a skillet, 6–8 min; drain fat.', 'Stir in taco seasoning and ⅔ cup water; simmer 5 min.', 'Dice tomatoes.', 'Fill warm tortillas with beef, cheese, slaw, tomato and salsa.'],
   },
   {
-    id: 'black-bean-quesadillas', name: 'Black Bean & Corn Quesadillas', emoji: '🫓', serves: 4, minutes: 20,
+    id: 'black-bean-quesadillas', meals: ['dinner', 'lunch'], name: 'Black Bean & Corn Quesadillas', emoji: '🫓', serves: 4, minutes: 20,
     tags: ['vegetarian', 'mexican', 'kid-friendly'], macros: { cal: 480, protein: 20, carbs: 58, fat: 18 },
     ingredients: [['black_beans', 2], ['corn', 1], ['cheddar', 2], ['tortillas', 8], ['salsa', 1], ['cumin', 1]],
     steps: ['Rinse beans; mash half of them with cumin.', 'Spread mashed beans on 4 tortillas; top with whole beans, corn and cheese.', 'Top with remaining tortillas.', 'Cook in a dry skillet 3 min per side until crisp.', 'Cut in wedges; serve with salsa.'],
@@ -102,7 +119,7 @@ export const RECIPES = [
     steps: ['Boil pasta in salted water per package.', 'Meanwhile brown beef with diced onion and garlic, 8 min.', 'Add marinara; simmer 10 min.', 'Toss with drained pasta; top with parmesan.'],
   },
   {
-    id: 'turkey-chili', name: 'One-Pot Turkey Chili', emoji: '🥣', serves: 6, minutes: 40,
+    id: 'turkey-chili', meals: ['dinner', 'lunch'], name: 'One-Pot Turkey Chili', emoji: '🥣', serves: 6, minutes: 40,
     tags: ['soup', 'freezer-friendly'], macros: { cal: 380, protein: 30, carbs: 38, fat: 11 },
     ingredients: [['ground_turkey', 1], ['kidney_beans', 2], ['black_beans', 1], ['crushed_tomato', 1], ['onion', 1], ['bell_pepper', 1], ['garlic', 3], ['chili_powder', 3], ['cumin', 2], ['cheddar', 0.5]],
     steps: ['Brown turkey with diced onion, pepper and garlic, 8 min.', 'Stir in chili powder and cumin; cook 1 min.', 'Add rinsed beans and crushed tomatoes plus 1 cup water.', 'Simmer 25 min, stirring now and then.', 'Top with cheddar. Leftovers freeze well.'],
@@ -120,13 +137,13 @@ export const RECIPES = [
     steps: ['Start rice.', 'Whisk honey, soy sauce and minced garlic.', 'Sear salmon skin-side up 4 min, flip, add sauce and cook 3–4 min more.', 'Steam broccoli 5 min.', 'Serve salmon over rice with broccoli; spoon sauce over.'],
   },
   {
-    id: 'lentil-curry', name: 'Coconut Lentil Curry', emoji: '🍛', serves: 4, minutes: 35,
+    id: 'lentil-curry', meals: ['dinner', 'lunch'], name: 'Coconut Lentil Curry', emoji: '🍛', serves: 4, minutes: 35,
     tags: ['vegetarian', 'vegan', 'freezer-friendly'], macros: { cal: 470, protein: 18, carbs: 64, fat: 16 },
     ingredients: [['lentils', 1], ['coconut_milk', 1], ['diced_tomato', 1], ['onion', 1], ['garlic', 3], ['ginger', 1], ['curry_powder', 3], ['spinach', 2], ['rice', 1.5]],
     steps: ['Start rice.', 'Sauté diced onion, garlic and ginger 5 min.', 'Add curry powder; cook 1 min.', 'Add rinsed lentils, tomatoes, coconut milk and 2 cups water; simmer 20–25 min.', 'Stir in spinach until wilted. Serve over rice.'],
   },
   {
-    id: 'chickpea-tikka', name: 'Chickpea Tikka Masala', emoji: '🍛', serves: 4, minutes: 30,
+    id: 'chickpea-tikka', meals: ['dinner', 'lunch'], name: 'Chickpea Tikka Masala', emoji: '🍛', serves: 4, minutes: 30,
     tags: ['vegetarian'], macros: { cal: 490, protein: 16, carbs: 70, fat: 16 },
     ingredients: [['chickpeas', 2], ['crushed_tomato', 1], ['greek_yogurt', 0.5], ['onion', 1], ['garlic', 3], ['ginger', 1], ['curry_powder', 3], ['rice', 1.5], ['cilantro', 1]],
     steps: ['Start rice.', 'Sauté onion, garlic and ginger 5 min.', 'Add curry powder, then crushed tomatoes and rinsed chickpeas; simmer 15 min.', 'Off heat, stir in yogurt.', 'Top with cilantro; serve over rice.'],
@@ -138,7 +155,7 @@ export const RECIPES = [
     steps: ['Start rice.', 'Stir-fry frozen veggies in a hot oiled pan 5 min.', 'Add garlic, ginger and thawed shrimp; cook 3 min until pink.', 'Stir in soy sauce and honey; toss 1 min.', 'Serve over rice.'],
   },
   {
-    id: 'peanut-noodles', name: 'Spicy Peanut Noodles with Tofu', emoji: '🍜', serves: 4, minutes: 25,
+    id: 'peanut-noodles', meals: ['dinner', 'lunch'], name: 'Spicy Peanut Noodles with Tofu', emoji: '🍜', serves: 4, minutes: 25,
     tags: ['asian', 'vegetarian', 'vegan'], macros: { cal: 540, protein: 22, carbs: 60, fat: 24 },
     ingredients: [['ramen', 4], ['tofu', 14], ['peanut_butter', 4], ['soy_sauce', 3], ['sriracha', 1], ['lime', 1], ['cabbage', 2], ['green_onion', 1]],
     steps: ['Press and cube tofu; pan-fry until golden, 8 min.', 'Cook noodles (discard seasoning packets); save ½ cup water.', 'Whisk peanut butter, soy, sriracha, lime juice and noodle water.', 'Toss noodles, sauce, slaw and tofu.', 'Top with green onions.'],
@@ -156,7 +173,7 @@ export const RECIPES = [
     steps: ['Heat oven to 375°F. Boil pasta 2 min less than package says.', 'Mix pasta, marinara, spinach, garlic, seasoning and half the mozzarella.', 'Pour into a baking dish; top with remaining mozzarella and parmesan.', 'Bake 20 min until bubbly.'],
   },
   {
-    id: 'chicken-noodle-soup', name: 'Chicken Noodle Soup', emoji: '🍲', serves: 6, minutes: 40,
+    id: 'chicken-noodle-soup', meals: ['dinner', 'lunch'], name: 'Chicken Noodle Soup', emoji: '🍲', serves: 6, minutes: 40,
     tags: ['soup', 'kid-friendly'], macros: { cal: 330, protein: 28, carbs: 30, fat: 10 },
     ingredients: [['chicken_thigh', 1.5], ['egg_noodles', 8], ['carrot', 3], ['celery', 3], ['onion', 1], ['garlic', 2], ['chicken_broth', 8], ['italian_season', 1]],
     steps: ['Sauté diced onion, carrot, celery and garlic 6 min.', 'Add broth, seasoning and whole chicken thighs; simmer 20 min.', 'Remove chicken, shred it, and return to pot.', 'Add noodles; cook 6–8 min until tender.'],
@@ -192,13 +209,13 @@ export const RECIPES = [
     steps: ['Add chicken, crushed tomatoes, honey, paprika and diced onion to a slow cooker.', 'Cook on low 6 hours (or high 3).', 'Shred chicken in the sauce.', 'Serve on buns topped with slaw.'],
   },
   {
-    id: 'minestrone', name: 'Hearty Minestrone', emoji: '🥣', serves: 6, minutes: 40,
+    id: 'minestrone', meals: ['dinner', 'lunch'], name: 'Hearty Minestrone', emoji: '🥣', serves: 6, minutes: 40,
     tags: ['soup', 'vegetarian', 'vegan', 'freezer-friendly'], macros: { cal: 310, protein: 12, carbs: 54, fat: 5 },
     ingredients: [['pasta', 6], ['kidney_beans', 1], ['diced_tomato', 2], ['zucchini', 1], ['carrot', 2], ['celery', 2], ['onion', 1], ['garlic', 3], ['spinach', 2], ['italian_season', 2]],
     steps: ['Sauté onion, carrot, celery and garlic 6 min.', 'Add tomatoes, seasoning and 6 cups water; simmer 15 min.', 'Add diced zucchini, beans and pasta; cook 10 min.', 'Stir in spinach. Season well with salt and pepper.'],
   },
   {
-    id: 'egg-fried-rice-veg', name: 'Veggie Egg Fried Rice', emoji: '🍳', serves: 4, minutes: 20,
+    id: 'egg-fried-rice-veg', meals: ['dinner', 'lunch'], name: 'Veggie Egg Fried Rice', emoji: '🍳', serves: 4, minutes: 20,
     tags: ['asian', 'vegetarian'], macros: { cal: 420, protein: 15, carbs: 64, fat: 12 },
     ingredients: [['rice', 1.5], ['eggs', 5], ['stir_fry_veg', 3], ['soy_sauce', 3], ['green_onion', 1], ['garlic', 2], ['sriracha', 1]],
     steps: ['Cook rice (day-old is best).', 'Stir-fry veggies and garlic 4 min.', 'Push aside, scramble eggs.', 'Add rice and soy sauce; fry 3–4 min.', 'Top with green onion and sriracha.'],
@@ -220,5 +237,110 @@ export const RECIPES = [
     tags: ['high-protein'], macros: { cal: 520, protein: 28, carbs: 40, fat: 26 },
     ingredients: [['bell_pepper', 4], ['ground_beef', 1], ['rice', 0.75], ['diced_tomato', 1], ['mozzarella', 1], ['onion', 1], ['italian_season', 2]],
     steps: ['Heat oven to 375°F. Cook rice.', 'Brown beef and onion; stir in tomatoes, seasoning and rice.', 'Halve and seed peppers; fill with mixture.', 'Top with mozzarella; cover with foil and bake 25 min, uncovered 5 more.'],
+  },
+  // ---------- Breakfasts ----------
+  {
+    id: 'overnight-oats', name: 'Berry Overnight Oats', emoji: '🥣', serves: 4, minutes: 5, meals: ['breakfast'],
+    tags: ['vegetarian', 'make-ahead'], macros: { cal: 340, protein: 15, carbs: 54, fat: 7 },
+    ingredients: [['oats', 2], ['milk', 2], ['greek_yogurt', 1], ['frozen_berries', 2], ['honey', 2]],
+    steps: ['Stir oats, milk, yogurt and honey together.', 'Divide into 4 jars and top with frozen berries.', 'Refrigerate overnight (keeps 4 days). Eat cold or warm 1 min.'],
+  },
+  {
+    id: 'eggs-toast', name: 'Scrambled Eggs & Toast', emoji: '🍳', serves: 2, minutes: 10, meals: ['breakfast'],
+    tags: ['vegetarian', 'high-protein', 'kid-friendly'], macros: { cal: 380, protein: 20, carbs: 28, fat: 20 },
+    ingredients: [['eggs', 5], ['bread', 4], ['butter', 2], ['milk', 0.25]],
+    steps: ['Whisk eggs with milk and a pinch of salt.', 'Melt butter in a pan over medium-low heat.', 'Cook eggs, stirring gently, until just set, 3–4 min.', 'Serve with buttered toast.'],
+  },
+  {
+    id: 'breakfast-burritos', name: 'Freezer Breakfast Burritos', emoji: '🌯', serves: 6, minutes: 30, meals: ['breakfast'],
+    tags: ['vegetarian', 'make-ahead', 'freezer-friendly'], macros: { cal: 420, protein: 19, carbs: 44, fat: 18 },
+    ingredients: [['eggs', 8], ['tortillas', 6], ['black_beans', 1], ['cheddar', 1], ['potato', 2], ['salsa', 0.5]],
+    steps: ['Dice potatoes small; pan-fry in oil until crisp, 12 min.', 'Scramble eggs.', 'Warm tortillas; fill with eggs, potatoes, rinsed beans, cheese and salsa.', 'Roll up. Eat now, or wrap in foil and freeze (reheat 2 min in microwave).'],
+  },
+  {
+    id: 'banana-pancakes', name: 'Banana Pancakes', emoji: '🥞', serves: 4, minutes: 20, meals: ['breakfast'],
+    tags: ['vegetarian', 'kid-friendly'], macros: { cal: 410, protein: 11, carbs: 66, fat: 11 },
+    ingredients: [['flour', 1.5], ['eggs', 2], ['milk', 1.25], ['banana', 2], ['butter', 3], ['syrup', 6]],
+    steps: ['Mash bananas; whisk in eggs, milk and 2 tbsp melted butter.', 'Stir in flour, 1 tbsp sugar, 2 tsp baking powder and a pinch of salt until just combined.', 'Cook ¼-cup scoops on a buttered pan, 2 min per side.', 'Serve with syrup.'],
+  },
+  {
+    id: 'yogurt-parfait', name: 'Yogurt Granola Parfait', emoji: '🍓', serves: 2, minutes: 5, meals: ['breakfast'],
+    tags: ['vegetarian', 'quick'], macros: { cal: 360, protein: 20, carbs: 48, fat: 9 },
+    ingredients: [['greek_yogurt', 1.5], ['granola', 0.75], ['frozen_berries', 1], ['honey', 1]],
+    steps: ['Thaw berries a few minutes (or overnight in the fridge).', 'Layer yogurt, berries and granola in bowls.', 'Drizzle with honey.'],
+  },
+  {
+    id: 'pb-banana-toast', name: 'Peanut Butter Banana Toast', emoji: '🍌', serves: 2, minutes: 5, meals: ['breakfast'],
+    tags: ['vegetarian', 'vegan', 'quick', 'kid-friendly'], macros: { cal: 390, protein: 13, carbs: 50, fat: 17 },
+    ingredients: [['bread', 4], ['peanut_butter', 4], ['banana', 2], ['cinnamon', 0.5]],
+    steps: ['Toast bread.', 'Spread with peanut butter.', 'Top with sliced banana and a sprinkle of cinnamon.'],
+  },
+  {
+    id: 'egg-muffins', name: 'Veggie Egg Muffin Cups', emoji: '🧁', serves: 4, minutes: 25, meals: ['breakfast'],
+    tags: ['vegetarian', 'high-protein', 'make-ahead'], macros: { cal: 230, protein: 17, carbs: 5, fat: 15 },
+    ingredients: [['eggs', 10], ['spinach', 1], ['bell_pepper', 1], ['cheddar', 0.5], ['onion', 0.5]],
+    steps: ['Heat oven to 350°F and grease a 12-cup muffin tin.', 'Divide chopped spinach, pepper and onion among the cups.', 'Whisk eggs with salt and pepper; pour over veggies and top with cheese.', 'Bake 20 min. Keeps 4 days in the fridge.'],
+  },
+  {
+    id: 'apple-cinnamon-oatmeal', name: 'Apple Cinnamon Oatmeal', emoji: '🍎', serves: 2, minutes: 10, meals: ['breakfast'],
+    tags: ['vegetarian', 'quick'], macros: { cal: 320, protein: 10, carbs: 58, fat: 6 },
+    ingredients: [['oats', 1], ['milk', 2], ['apple', 1], ['cinnamon', 1], ['honey', 1]],
+    steps: ['Bring milk to a simmer.', 'Stir in oats, diced apple and cinnamon.', 'Cook 5 min, stirring, until thick.', 'Sweeten with honey.'],
+  },
+  {
+    id: 'egg-muffin-sandwich', name: 'Egg & Cheese Muffin Sandwiches', emoji: '🥯', serves: 2, minutes: 10, meals: ['breakfast'],
+    tags: ['vegetarian', 'high-protein', 'kid-friendly'], macros: { cal: 360, protein: 19, carbs: 28, fat: 18 },
+    ingredients: [['english_muffins', 2], ['eggs', 2], ['cheese_slices', 2], ['butter', 1]],
+    steps: ['Toast English muffins.', 'Fry eggs in butter; break yolks and flip after 2 min.', 'Top each egg with cheese to melt.', 'Sandwich in muffins.'],
+  },
+
+  // ---------- Lunches ----------
+  {
+    id: 'turkey-sandwich', name: 'Turkey & Cheese Sandwiches', emoji: '🥪', serves: 2, minutes: 5, meals: ['lunch'],
+    tags: ['quick', 'kid-friendly'], macros: { cal: 430, protein: 26, carbs: 36, fat: 19 },
+    ingredients: [['bread', 4], ['deli_turkey', 4], ['cheese_slices', 2], ['romaine', 1], ['tomato', 1], ['mayo', 2], ['apple', 2]],
+    steps: ['Spread bread with mayo.', 'Layer turkey, cheese, lettuce and sliced tomato.', 'Serve with an apple on the side.'],
+  },
+  {
+    id: 'tuna-salad', name: 'Tuna Salad Sandwiches', emoji: '🐟', serves: 2, minutes: 10, meals: ['lunch'],
+    tags: ['quick', 'high-protein'], macros: { cal: 420, protein: 28, carbs: 30, fat: 20 },
+    ingredients: [['tuna', 2], ['mayo', 3], ['celery', 1], ['bread', 4], ['romaine', 1], ['lemon', 0.5]],
+    steps: ['Drain tuna; mix with mayo, finely diced celery, a squeeze of lemon, salt and pepper.', 'Spread on bread with lettuce.'],
+  },
+  {
+    id: 'chicken-caesar-wraps', name: 'Chicken Caesar Wraps', emoji: '🌯', serves: 4, minutes: 20, meals: ['lunch'],
+    tags: ['high-protein', 'make-ahead'], macros: { cal: 480, protein: 34, carbs: 34, fat: 22 },
+    ingredients: [['chicken_breast', 1], ['tortillas', 4], ['romaine', 4], ['parmesan', 0.25], ['caesar', 6]],
+    steps: ['Season chicken with salt and pepper; pan-cook 6 min per side, then slice.', 'Toss chopped romaine with dressing and parmesan.', 'Fill tortillas with salad and chicken; roll tightly. Keeps 2 days wrapped.'],
+  },
+  {
+    id: 'grilled-cheese-soup', name: 'Grilled Cheese & Tomato Soup', emoji: '🧀', serves: 2, minutes: 15, meals: ['lunch'],
+    tags: ['vegetarian', 'kid-friendly'], macros: { cal: 520, protein: 18, carbs: 52, fat: 26 },
+    ingredients: [['bread', 4], ['cheese_slices', 4], ['butter', 2], ['tomato_soup', 1]],
+    steps: ['Heat soup with a can of water (or milk).', 'Butter the outside of the bread; fill with cheese.', 'Cook in a pan over medium heat, 3 min per side, until golden.'],
+  },
+  {
+    id: 'hummus-wraps', name: 'Hummus Veggie Wraps', emoji: '🥙', serves: 2, minutes: 10, meals: ['lunch'],
+    tags: ['vegetarian', 'vegan', 'quick'], macros: { cal: 390, protein: 12, carbs: 52, fat: 15 },
+    ingredients: [['tortillas', 2], ['hummus', 6], ['cucumber', 1], ['carrot', 1], ['spinach', 1], ['bell_pepper', 0.5]],
+    steps: ['Spread hummus over tortillas.', 'Add spinach, sliced cucumber, shredded carrot and pepper strips.', 'Roll up tightly and cut in half.'],
+  },
+  {
+    id: 'chickpea-salad', name: 'Greek Chickpea Salad', emoji: '🥗', serves: 4, minutes: 15, meals: ['lunch'],
+    tags: ['vegetarian', 'vegan', 'make-ahead'], macros: { cal: 330, protein: 11, carbs: 38, fat: 15 },
+    ingredients: [['chickpeas', 2], ['cucumber', 1], ['tomato', 3], ['onion', 0.5], ['lemon', 1], ['olive_oil', 3], ['italian_season', 1]],
+    steps: ['Rinse chickpeas; dice cucumber, tomatoes and onion.', 'Whisk lemon juice, olive oil, seasoning, salt and pepper.', 'Toss everything together. Keeps 3 days in the fridge.'],
+  },
+  {
+    id: 'bean-cheese-burritos', name: 'Bean, Rice & Cheese Burritos', emoji: '🌯', serves: 4, minutes: 25, meals: ['lunch'],
+    tags: ['vegetarian', 'make-ahead', 'freezer-friendly'], macros: { cal: 510, protein: 19, carbs: 72, fat: 15 },
+    ingredients: [['tortillas', 4], ['black_beans', 1], ['rice', 0.75], ['cheddar', 1], ['salsa', 0.5], ['cumin', 1]],
+    steps: ['Cook rice.', 'Warm beans with cumin and mash lightly.', 'Fill tortillas with rice, beans, cheese and salsa; roll up.', 'Toast seam-side down in a pan 2 min. Freeze extras in foil.'],
+  },
+  {
+    id: 'pasta-salad', name: 'Italian Pasta Salad', emoji: '🍝', serves: 4, minutes: 20, meals: ['lunch'],
+    tags: ['vegetarian', 'make-ahead'], macros: { cal: 440, protein: 14, carbs: 56, fat: 18 },
+    ingredients: [['pasta', 8], ['bell_pepper', 1], ['cucumber', 1], ['tomato', 2], ['mozzarella', 0.75], ['olive_oil', 3], ['italian_season', 2]],
+    steps: ['Cook pasta; rinse under cold water.', 'Dice pepper, cucumber and tomatoes.', 'Toss with mozzarella, olive oil, seasoning, salt and a splash of vinegar if you have it.', 'Chill. Keeps 4 days.'],
   },
 ];

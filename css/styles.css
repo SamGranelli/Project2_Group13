@@ -247,3 +247,18 @@ ul.ings li b { min-width: 76px; font-variant-numeric: tabular-nums; }
 
 .empty { text-align: center; padding: 30px 10px; color: var(--muted); }
 .empty .big { font-size: 3rem; }
+
+/* Meal rows inside a day card */
+.meal-row {
+  width: 100%; display: flex; align-items: center; gap: 12px; text-align: left;
+  background: none; border: 0; border-top: 1px solid var(--line); padding: 10px 0;
+}
+.day-head + .meal-row { border-top: 0; padding-top: 2px; }
+.meal-row .emoji { width: 46px; height: 46px; font-size: 1.6rem; }
+.meal-label { font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.chev { color: var(--muted); font-size: 1.4rem; padding: 0 2px; }
+.add-row { display: flex; gap: 6px; flex-wrap: wrap; padding-top: 8px; border-top: 1px dashed var(--line); }
+.add-row .chip { padding: 4px 10px; font-size: .78rem; color: var(--muted); }
+.day.off .add-row { border-top: 0; padding-top: 0; }
+.today-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.chip input { accent-color: var(--accent); margin: 0 2px 0 0; vertical-align: -2px; }
